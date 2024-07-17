@@ -1,0 +1,239 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins",sans-serif;
+}
+body{
+    background: rgb(48, 44, 44);
+    color: #fff;
+}
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(train2.jpg);
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px); /* Adjust the blur value as needed */
+    z-index: -1; /* Ensure the background image is behind other content */
+}
+
+nav{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 15%;
+    background: transparent;
+    transition: all .50s ease;
+}
+img{
+    color: white;
+    width: 200px;
+    max-width: 500px;
+    height: 200px;
+    max-height: 500px;
+    cursor: pointer;
+}
+.logincontent {
+    width: auto;
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%)
+    
+}
+.container h1{
+    color: #000;
+}
+.col-md-12 h1{
+    color:#000 ;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    font-size: 0px;
+
+}
+.simple{
+    width: 420px;
+    background:rgb(0 0 0 / 32%);
+    border: 2px solid rgba(225, 255, 255, 2);
+    backdrop-filter: blru(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+    float: right ;
+}
+.simple h1{
+    margin: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+.simple .input-box {
+    width: 100%;
+    height: 50px;
+    background:transparent;
+    margin: 30px 0;
+}
+.input-box input{
+    width: 100%;
+    height:100%;
+    background:transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(225, 255, 255, 2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #ffff;
+    padding: 20px 45px 20px 20px;
+}
+.input-box input::placeholder{
+    color: #ffff;
+}
+.input-box i{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translate(-50%);
+    font-size: 20px;
+}
+.simple .remember-forgot{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -15px,0,15px;
+}
+.remember-forgot label input{
+    accent-color: #fff;
+    margin-right: 3px;
+
+}
+.remember-forgot a{
+    color: #fff;
+    text-decoration: none;
+
+}
+.remember-forgot a:hover{
+    text-decoration:underline;
+
+}
+.simple .btn{
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    font-size:16px;
+    color: #333;
+    font-weight: 600;
+}
+.simple .register-link{
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+
+}
+.register-link p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+.register-link p a:hover{
+    text-decoration: underline;
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 10px; /* Add some margin if needed */
+    color: white;
+  }
+  @media (max-width: 1350px){
+    nav{
+        padding: 0px 5%;        
+    }
+    .container{
+        padding: 0px 5%;
+    }
+    .footer{
+        font-size: 15px;
+    }
+}
+@media (max-width: 950px){
+    
+    footer h6{
+        font-size: 10px;
+    }
+    .logo{
+       padding: 5px 10px;
+    }
+    .container{
+        padding: 9px 27px;
+    }
+    .simple{
+        padding: 9px 27px;
+    }
+    .input-box{
+        padding: 9px 27px;
+    }
+    .remember-forgot{
+        padding: 9px 27px;
+    }
+    .btn{
+        padding: 9px 27px;
+    }
+}
+/* Media Query for tablets */
+@media (max-width: 768px) {
+    .simple {
+        width: 90%; /* Increase portable width */
+        max-width: 400px; /* Set maximum width */
+        margin: 20px auto; /* Center the login box horizontally */
+        padding: 20px; /* Adjust padding */
+    }
+}
+
+/* Additional Media Query for Mobile Devices */
+@media (max-width: 576px) {
+    nav img{
+        width: 120px;
+        height: auto;
+    }
+    .simple {
+        margin: 50%;
+        width: 100%; /* Reduce width */
+        height: 100%;
+        padding: 15px; /* Adjust padding */
+
+    }
+
+    .simple h1 {
+        font-size: 15px; /* Reduce font size */
+    }
+
+    .input-box input {
+        font-size: 15px; /* Reduce font size */
+    }
+    .simple .btn {
+        margin-left: 50px;
+        width: 50%;
+        height: 30px; /* Adjust height */
+        font-size: 12px; /* Reduce font size */
+    }
+
+    .register-link {
+        font-size: 10px; /* Reduce font size */
+    }
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Translate announcement</title>
+    <link rel="stylesheet" type="text/css" href="tcss.css">   
+</head>
+<body>
+    <div class="background-image"></div>
+    <h1 id="announcement">Your attention please, Dear passengers, we are pleased to announce that the train number 02216 cheran Express is arriving at 8:00 and departing at 8:15 in platform number 1</h1>
+    <div id="languageDropdown">
+        <label for="languageSelect"><b>Select Language:</b></label>
+        <select id="languageSelect">
+            <option value="bn">Bengali</option>
+            <option value="nl">Dutch</option>
+            <option value="en">English</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+            <option value="gu">Gujarati</option>
+            <option value="hi">Hindi</option>
+            <option value="id">Indonesian</option>
+            <option value="it">Italian</option>
+            <option value="ja">Japanese</option>
+            <option value="kn">Kannada</option>
+            <option value="ko">Korean</option>
+            <option value="ms">Malay</option>
+            <option value="ml">Malayalam</option>
+            <option value="mr">Marathi</option>
+            <option value="ne">Nepali</option>
+            <option value="or">Odia (Oriya)</option>
+            <option value="pt">Portuguese</option>
+            <option value="pa">Punjabi</option>
+            <option value="ru">Russian</option>
+            <option value="es">Spanish</option>
+            <option value="ta">Tamil</option>
+            <option value="te">Telugu</option>
+            <option value="th">Thai</option>
+            <option value="tr">Turkish</option>
+            <option value="uk">Ukrainian</option>
+            <option value="ur">Urdu</option>
+            <option value="vi">Vietnamese</option>
+        </select>        
+    </div>
+    <div id="google_translate_element"></div>
+    <a href="G:\mini project\index.html" class="home-button">Home</a>
+    <a href="cheran.html" class="home-button">Back</a>
+    <button id="vocalAnnouncementButton" onclick="speakAnnouncement()">
+        <img src="speak.png" alt="Speaker Icon" class="speaker-icon">
+    </button>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="announcement.js"></script>
+    <script>
+       // Function to translate text using Google Translate API and speak it
+function translateAndSpeak(text, targetLanguage) {
+    // Create a new Google Translate API request
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=" + targetLanguage + "&dt=t&q=" + encodeURIComponent(text), true);
+    xhr.send();
+
+    // Handle the response
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var response = JSON.parse(xhr.responseText);
+            var translatedText = response[0][0][0];
+
+            // Create a new SpeechSynthesisUtterance object with the translated text
+            var announcement = new SpeechSynthesisUtterance(translatedText);
+
+            // Speak the translated announcement
+            window.speechSynthesis.speak(announcement);
+
+            // Play MP3 for specific languages
+            switch (targetLanguage) {
+                case "bn":
+                    playAudio("cheran bengali 1.mp3");
+                    break;
+                case "nl":
+                    playAudio("cheran dutch 1.mp3");
+                    break;
+                case "en":
+                    playAudio("cheran english 1.mp3");
+                    break;
+                case "fr":
+                    playAudio("cheran french 1.mp3");
+                    break;
+                case "de":
+                    playAudio("cheran german 1.mp3");
+                    break;
+                case "gu":
+                    playAudio("cheran gujarati 1.mp3");
+                    break;
+                case "hi":
+                    playAudio("cheran hindi 1.mp3");
+                    break;
+                case "id":
+                    playAudio("cheran indonesia 1.mp3");
+                    break;
+                case "it":
+                    playAudio("cheran italian 1.mp3");
+                    break;
+                case "ja":
+                    playAudio("cheran japenes 1.mp3");
+                    break;
+                case "kn":
+                    playAudio("cheran kannada 1.mp3");
+                    break;
+                case "ko":
+                    playAudio("cheran korean 1.mp3");
+                    break;
+                case "ms":
+                    playAudio("cheran malay 1.mp3");
+                    break;
+                case "ml":
+                    playAudio("cheran malayalam 1.mp3");
+                    break;
+                case "mr":
+                    playAudio("cheran marathi 1.mp3");
+                    break;
+                case "ne":
+                    playAudio("nepali_audio.mp3");
+                    break;
+                case "or":
+                    playAudio("odia_audio.mp3");
+                    break;
+                case "pt":
+                    playAudio("portuguese_audio.mp3");
+                    break;
+                case "pa":
+                    playAudio("punjabi_audio.mp3");
+                    break;
+                case "ru":
+                    playAudio("cheran russian 1.mp3");
+                    break;
+                case "es":
+                    playAudio("spanish_audio.mp3");
+                    break;
+                case "ta":
+                    playAudio("cheran tamil 1.mp3");
+                    break;
+                case "te":
+                    playAudio("cheran telugu 1.mp3");
+                    break;
+                case "th":
+                    playAudio("thai_audio.mp3");
+                    break;
+                case "tr":
+                    playAudio("turkish_audio.mp3");
+                    break;
+                case "uk":
+                    playAudio("ukrainian_audio.mp3");
+                    break;
+                case "ur":
+                    playAudio("cheran urud 1.mp3");
+                    break;
+                case "vi":
+                    playAudio("vietnamese_audio.mp3");
+                    break;
+                default:
+                    break;
+            }
+            // Add conditions for other languages if needed
+        }
+    };
+}
+
+// Function to play audio
+function playAudio(audioUrl) {
+    var audio = new Audio(audioUrl);
+    audio.play();
+}
+
+// Function to speak announcement
+function speakAnnouncement() {
+    // Get the announcement text
+    var announcementText = document.getElementById('announcement').textContent;
+
+    // Get the selected language code from the dropdown
+    var selectedLanguage = document.getElementById('languageSelect').value;
+
+    // Translate and speak in the selected language
+    translateAndSpeak(announcementText, selectedLanguage);
+}
+    </script>
+</body>
+</html>
